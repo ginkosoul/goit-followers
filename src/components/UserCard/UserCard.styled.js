@@ -4,6 +4,7 @@ import avatar from "../../assets/card/default_avatar.webp";
 import frame from "../../assets/elipse.svg";
 
 export const CardWrapper = styled.div`
+  margin: 0 auto;
   width: 380px;
   height: 460px;
   max-width: 100%;
@@ -56,12 +57,11 @@ export const AvatarImage = styled.img`
 export const Text = styled.p`
   color: ${({ theme }) => theme.colors.primary};
   font-size: 20px;
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   text-transform: uppercase;
   margin-block: 16px;
+  text-align: center;
 `;
 
 export const FollowButton = styled.button`
@@ -79,8 +79,6 @@ export const FollowButton = styled.button`
     rgba(0, 0, 0, 0.25);
   color: #373737;
   font-size: 18px;
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;

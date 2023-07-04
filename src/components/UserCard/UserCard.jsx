@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { PropTypes } from "prop-types";
 
 import goitLogo from "../../assets/goit_logo.svg";
 import { formatNumer } from "../../utils/formatNumber";
@@ -11,11 +11,33 @@ import {
   Logo,
   Text,
 } from "./UserCard.styled";
+import { useDispatch } from "react-redux";
+import { updateUserThunk } from "../../redux/users/operations";
 
-export function UserCard() {
-  const [active, setActive] = useState(false);
+UserCard.propTypes = {
+  avatar: PropTypes.string,
+  followers: PropTypes.number,
+  id: PropTypes.string,
+  isFollow: PropTypes.bool,
+  tweets: PropTypes.number,
+};
+
+export function UserCard({
+  avatar = null,
+  followers = 100500,
+  id = null,
+  isFollow,
+  tweets = 777,
+}) {
+  const dispatch = useDispatch();
   const handleClick = () => {
-    setActive((prevState) => !prevState);
+    dispatch(
+      updateUserThunk({
+        id,
+        isFollow: !isFollow,
+        followers: isFollow ? followers - 1 : followers + 1,
+      })
+    );
   };
   return (
     <CardWrapper>
@@ -23,11 +45,11 @@ export function UserCard() {
       <CardHeader />
       <CardSplitter />
       <div>
-        <AvatarImage src={null} />
-        <Text> {formatNumer(777)} tweets</Text>
-        <Text> {formatNumer(100500)} Followers</Text>
-        <FollowButton status={active} type="button" onClick={handleClick}>
-          {active ? "Following" : "Follow"}
+        <AvatarImage src={avatar} />
+        <Text> {formatNumer(tweets)} tweets</Text>
+        <Text> {formatNumer(followers)} Followers</Text>
+        <FollowButton status={isFollow} type="button" onClick={handleClick}>
+          {isFollow ? "Following" : "Follow"}
         </FollowButton>
       </div>
     </CardWrapper>
