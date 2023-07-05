@@ -11,8 +11,10 @@ import {
   Logo,
   Text,
 } from "./UserCard.styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateUserThunk } from "../../redux/users/operations";
+import { useState } from "react";
+import { selectIsLoading } from "../../redux/users/selectors";
 
 UserCard.propTypes = {
   avatar: PropTypes.string,
@@ -29,6 +31,11 @@ export function UserCard({
   isFollow,
   tweets = 777,
 }) {
+  const [loading, setLoading] = useState(false);
+  const loaded = !useSelector(selectIsLoading);
+
+  if (loaded && loading) setLoading(false);
+
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(
@@ -38,6 +45,7 @@ export function UserCard({
         followers: isFollow ? followers - 1 : followers + 1,
       })
     );
+    setLoading(true);
   };
   return (
     <CardWrapper>
@@ -45,11 +53,16 @@ export function UserCard({
       <CardHeader />
       <CardSplitter />
       <div>
-        <AvatarImage src={avatar} />
+        <AvatarImage avatar={avatar} />
         <Text> {formatNumer(tweets)} tweets</Text>
         <Text> {formatNumer(followers)} Followers</Text>
-        <FollowButton status={isFollow} type="button" onClick={handleClick}>
-          {isFollow ? "Following" : "Follow"}
+        <FollowButton
+          disabled={loading}
+          status={isFollow}
+          type="button"
+          onClick={handleClick}
+        >
+          {loading ? "Loading..." : isFollow ? "Following" : "Follow"}
         </FollowButton>
       </div>
     </CardWrapper>

@@ -15,6 +15,9 @@ export const userSlice = createSlice({
     nextPage: (state) => {
       state.page = state.page + 1;
     },
+    resetPage: (state) => {
+      state.page = 0;
+    },
     updateFilter: (state, { payload }) => {
       state.filter = payload;
     },
@@ -45,9 +48,9 @@ function rejected(state, { payload }) {
 }
 
 function pending(state) {
-  state.loading = false;
+  state.loading = true;
 }
 
-export const { nextPage, updateFilter } = userSlice.actions;
+export const { nextPage, updateFilter, resetPage } = userSlice.actions;
 
 export const usersReducer = userSlice.reducer;

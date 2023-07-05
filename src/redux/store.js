@@ -7,12 +7,13 @@ import {
   REGISTER,
   REHYDRATE,
   persistReducer,
+  persistStore,
 } from "redux-persist";
 import { usersReducer } from "./users/slice";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-  key: "root",
+  key: "filter",
   storage,
   whitelist: ["filter"],
 };
@@ -29,3 +30,5 @@ export const store = configureStore({
       },
     }),
 });
+
+export const persistor = persistStore(store);

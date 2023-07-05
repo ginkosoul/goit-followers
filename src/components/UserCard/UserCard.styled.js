@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
 import mainLogo from "../../assets/card/card_logo@3x.webp";
-import avatar from "../../assets/card/default_avatar.webp";
+import default_avatar from "../../assets/card/default_avatar.webp";
 import frame from "../../assets/elipse.svg";
 
-export const CardWrapper = styled.div`
+export const CardWrapper = styled.li`
+  display: block;
   margin: 0 auto;
   width: 380px;
   height: 460px;
@@ -46,9 +47,12 @@ export const AvatarImage = styled.img`
   height: 80px;
   margin-top: -44px;
   margin-inline: auto;
-  background-image: url(${frame}), url(${({ src }) => src || avatar}),
+  background: none;
+  background-image: url(${frame}),
+    url(${({ avatar }) => avatar || default_avatar}),
     linear-gradient(#5736a3, #5736a3);
-  background-size: cover;
+  background-size: cover, 62px 62px;
+  background-position: center;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 26px;
@@ -85,6 +89,7 @@ export const FollowButton = styled.button`
   background-color: ${({ theme, status }) =>
     status ? theme.colors.accent : theme.colors.primary};
   cursor: pointer;
+  transition: background-color ${({ theme }) => theme.animation.cubicBezier};
   &:hover {
     background-color: ${({ theme, status }) =>
       status ? theme.colors.primary : theme.colors.accent};

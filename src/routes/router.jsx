@@ -1,21 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
-import { App, ErrorPage, UserList } from "../components";
+import { App, ErrorPage } from "../components";
+import { navigation } from "../defaults";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "users",
-        element: <UserList />,
-        errorElement: <ErrorPage />,
-      },
-      {
-        path: "about",
-        element: <div>About</div>,
-      },
-    ],
+    children: navigation.map(({ to, Element }) => ({
+      path: to,
+      element: <Element />,
+      errorElement: <ErrorPage />,
+    })),
   },
 ]);
