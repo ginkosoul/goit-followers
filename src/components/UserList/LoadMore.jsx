@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { LoadMoreButton, LoadMoreWrapper } from "./UserList.styled";
-import { nextPage } from "../../redux/users/slice";
-import { selectIsLoading } from "../../redux/users/selectors";
+import { nextPage } from "@/redux/users/slice";
+import { selectIsLoading } from "@/redux/users/selectors";
 
 export function LoadMore() {
   const loading = useSelector(selectIsLoading);

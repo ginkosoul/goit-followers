@@ -1,5 +1,5 @@
-import { navigation } from "../../defaults";
-import { theme } from "../../styles/theme";
+import { navigation } from "@/defaults";
+import { theme } from "@/styles/theme";
 import { Link, NavList, NavWrapper } from "./NavBar.styled";
 
 export function NavBar() {

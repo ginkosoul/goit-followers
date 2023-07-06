@@ -4,4 +4,5 @@ export * from "./UserList/UserList";
 export * from "./Filter/Filter";
 export * from "./NavBar/NavBar";
 export * from "./Home/Home";
+export * from "./Layout/Layout";
 export * from "./App";

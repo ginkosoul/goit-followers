@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types";
 
-import goitLogo from "../../assets/goit_logo.svg";
-import { formatNumer } from "../../utils/formatNumber";
+import goitLogo from "@assets/goit_logo.svg";
+import { formatNumer } from "@/utils/formatNumber";
 import {
   AvatarImage,
   CardHeader,

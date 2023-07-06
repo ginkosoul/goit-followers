@@ -1,8 +1,8 @@
 import Select from "react-select";
-import { customStyles, options } from "../../defaults";
+import { customStyles, options } from "@/defaults";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilter } from "../../redux/users/selectors";
-import { resetPage, updateFilter } from "../../redux/users/slice";
+import { selectFilter } from "@/redux/users/selectors";
+import { resetPage, updateFilter } from "@/redux/users/slice";
 import { Header } from "./Filter.styled";
 
 export function Filter() {

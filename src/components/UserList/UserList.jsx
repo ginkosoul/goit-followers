@@ -1,14 +1,10 @@
 import { useSelector } from "react-redux";
-import {
-  selectFilter,
-  selectPage,
-  selectUsers,
-} from "../../redux/users/selectors";
-import { FILTER } from "../../defaults";
-import { UserCard } from "../UserCard/UserCard";
-import { Filter } from "../Filter/Filter";
+import { selectFilter, selectPage, selectUsers } from "@/redux/users/selectors";
+import { FILTER } from "@/defaults";
+
 import { List, Wrapper } from "./UserList.styled";
 import { LoadMore } from "./LoadMore";
+import { Filter, UserCard } from "@components";
 
 const per_page = 6;
 
